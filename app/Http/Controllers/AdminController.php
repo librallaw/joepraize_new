@@ -7,6 +7,7 @@ namespace App\Http\Controllers;
     use App\Bookings;
     use App\Eventi;
     use App\Feedback;
+    use App\Image;
     use App\Newrelease;
     use App\Shop;
     use App\Testify;

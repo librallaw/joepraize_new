@@ -24,6 +24,7 @@
 
                                 <div class="bg-picture card-box">
                                     <form method="post" action="{{URL::to("/admin/add/image")}}" enctype="multipart/form-data">
+                                        @csrf
                                         <div class="profile-info-namess">
 
                                             <div class="col-md-4">
