@@ -1,6 +1,10 @@
 <?php
+namespace App\Http\Controllers;
 
-class LiveController extends BaseController{
+use App\Comments;
+use Illuminate\Support\Facades\Input;
+
+class LiveController extends Controller{
 
    
 

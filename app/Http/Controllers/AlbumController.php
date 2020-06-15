@@ -1,10 +1,15 @@
 <?php
-    class AlbumController extends BaseController{
+namespace App\Http\Controllers;
+
+    use App\Song;
+    use Illuminate\Support\Facades\Response;
+
+    class AlbumController extends Controller{
 
         public function getDownload($unique_id)
         {
 
-            $data = Songs::where('unique','=',$unique_id);
+            $data = Song::where('unique','=',$unique_id);
             
 
             //PDF file is stored under project/public/download/info.pdf

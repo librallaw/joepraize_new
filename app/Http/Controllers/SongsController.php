@@ -1,10 +1,16 @@
 <?php
-class SongsController extends BaseController{
+namespace App\Http\Controllers;
+
+use App\Downloads;
+use App\Song;
+use Illuminate\Support\Facades\Response;
+
+class SongsController extends Controller{
 
     public function getDownload($unique_id)
     {
 
-        $data = Songs::where('unique_id','=',$unique_id)->first();
+        $data = Song::where('unique_id','=',$unique_id)->first();
 
 
 
