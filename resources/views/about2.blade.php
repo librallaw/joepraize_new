@@ -43,10 +43,7 @@
 			<i class="rt-icon2-cross2"></i>
 		</span>
 	</button>
-	<div class="widget widget_search">
-		<form method="get" class="searchform search-form form-inline" action="./">
-			<div class="form-group bottommargin_0"> <input type="text" value="" name="search" class="form-control" placeholder="Search keyword" id="modal-search-input"> </div> <button type="submit" class="theme_button no_bg_button">Search</button> </form>
-	</div>
+
 </div>
 <!-- Unyson messages modal -->
 <div class="modal fade" tabindex="-1" role="dialog" id="messages_modal">
@@ -75,7 +72,7 @@
 						</div>
 						<div class="col-md-6">
 							<h2 class="section_header with_line">Biography</h2>
-							<p class="fontsize_20"> {{$details->text}}</p>
+							<p class="fontsize_20"> <?php echo $details->text; ?></p>
 							<div class="content-justify vertical-center content-margins topmargin_25">
 								<div>
 									<h3 class="highlight bottommargin_0">Joe Praize</h3>
@@ -112,7 +109,7 @@
 		/* ]]> */
 	</script>
 	<script src="js/cue.min.js"></script>
-	<script src="js/switcher.js"></script>
+
 </body>
 
 </html>

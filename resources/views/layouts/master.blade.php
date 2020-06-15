@@ -129,43 +129,17 @@
                 <div class="col-md-12">
 
 
-                    @if(Session::get('note'))
 
-                        @foreach(Session::get('note') as $not)
-                            <div class="alert alert-warning">
-                                {{$not."<br />"}}
-                            </div>
-                        @endforeach
-                    @endif
 
                     <h4 class="header-title m-t-0 m-b-30">
 
-                        @if(Session::get('message'))
-                            @if(Session::get('type') == 'success')
-                                <div class="alert alert-success">
-                                    @elseif(Session::get('type') == 'error')
-                                        <div class="alert alert-danger">
-                                            @else
-                                                <div class="alert alert-info">
-                                                    @endif
-
-
-                                                    {{ Session::get('message') }}
-
-                                                </div>
-                            @endif
-
+                        @include("alert")
 
 
 
 
                     </h4>
-                    @if ($errors->has())
-                        <div class="alert alert-danger">
-                            @foreach ($errors->all() as $error)
-                                {{ $error }}<br>
-                            @endforeach
-                            @endif
+
                         </div>
                 </div>
             </div>
@@ -176,7 +150,8 @@
         @yield('content')
 
         <footer class="footer">
-            2017 © Joepraize.com
+            {{date("Y")}} © Joepraize.com
+
         </footer>
 
     </div>

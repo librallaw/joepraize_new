@@ -1,22 +1,37 @@
 <?php
-    class AdminController extends BaseController{
+namespace App\Http\Controllers;
+
+    use App\About;
+    use App\Album;
+    use App\Attendees;
+    use App\Bookings;
+    use App\Eventi;
+    use App\Feedback;
+    use App\Newrelease;
+    use App\Shop;
+    use App\Testify;
+    use Illuminate\Support\Facades\Input;
+    use Illuminate\Support\Facades\Redirect;
+    use Validator;
+
+    class AdminController extends Controller{
 
         public function login()
         {
-            return View::make('admin/login');
+            return view('admin/login');
         }
 
 
         public function shop()
         {
-            return View::make('admin/shop');
+            return view('admin/shop');
         }
 
         public function viewShop()
         {
             $details['details'] = Shop::orderBy('id', 'desc')->get();
 
-            return View::make('admin.viewShop',$details);
+            return view('admin.viewShop',$details);
         }
 
 
@@ -125,7 +140,7 @@
             $details['details'] = Shop::where('id',$id)->first();
            //dd($details);
 
-            return View::make('admin.editShop',$details);
+            return view('admin.editShop',$details);
         }
 
 
@@ -249,7 +264,7 @@
 
         public function addNewRelease()
         {
-            return View::make('admin.addNewRelease');
+            return view('admin.addNewRelease');
         }
 
 
@@ -379,7 +394,7 @@
         {
             $details['details'] = Newrelease::orderBy('id', 'desc')->get();
 
-            return View::make('admin.viewNewRelease',$details);
+            return view('admin.viewNewRelease',$details);
         }
 
         public function editNewRelease($unique_id)
@@ -388,7 +403,7 @@
             $details['details'] = Newrelease::where('unique_id','=',$unique_id)->first();
             //dd($details);
 
-            return View::make('admin.editNewRelease',$details);
+            return view('admin.editNewRelease',$details);
         }
 
         public function editNewReleaseProcess($unique_id)
@@ -524,7 +539,7 @@
             $details['details'] = About::first();
 
            // dd($details);
-            return View::make('admin.editAbout',$details);
+            return view('admin.editAbout',$details);
         }
         public function editAboutProcess()
         {
@@ -606,7 +621,7 @@
         public function editHomeAbout()
         {
             $details['details'] = Home::where('id',1)->first();
-           return View::make('admin.editHomeAbout',$details);
+           return view('admin.editHomeAbout',$details);
         } 
         
         
@@ -643,7 +658,7 @@
         public function core_values()
         {
             $details['details'] = Home::where('id',2)->first();
-            return View::make('admin.editPassionMission',$details);
+            return view('admin.editPassionMission',$details);
         }
 
 
@@ -687,7 +702,7 @@
 
         public function addAlbum()
         {
-            return View::make('admin.addAlbum');
+            return view('admin.addAlbum');
         }
 
         public function addAlbumProcess()
@@ -774,7 +789,7 @@
             $details['details'] = Album::all();
             //dd($details);
 
-            return View::make('admin.viewAlbum',$details);
+            return view('admin.viewAlbum',$details);
         }
 
         public function editAlbum($id)
@@ -783,7 +798,7 @@
             $details['details'] = Album::where('id',$id)->first();
             //dd($details);
 
-            return View::make('admin.editAlbum',$details);
+            return view('admin.editAlbum',$details);
         }
 
 
@@ -891,13 +906,13 @@
 
         public function addEvent()
         {
-          return View::make('admin.addEvent');  
+          return view('admin.addEvent');  
         }
 
 
         public function addImage()
         {
-            return View::make('admin.addGallery');
+            return view('admin.addGallery');
         }
 
         public function addEventProcess()
@@ -1054,7 +1069,7 @@
 
 
 
-                return \Illuminate\Support\Facades\Redirect::back()->with('message',"Image Was created succesfully")->with('note',$note)->with('type','success');
+                return Redirect::back()->with('message',"Image Was created succesfully")->with('note',$note)->with('type','success');
             }
 
 
@@ -1069,7 +1084,7 @@
             //dd($details);
 
 
-            return View::make('admin.viewEvent',$details);
+            return view('admin.viewEvent',$details);
         }
 
         public function viewAttendees($unique_id)
@@ -1078,7 +1093,7 @@
 
             //dd($data);
 
-            return View::make('admin.viewAttendees',$data);
+            return view('admin.viewAttendees',$data);
         }
 
 
@@ -1089,7 +1104,7 @@
             $details['details'] = Eventi::where('unique_id',$unique_id)->first();
             //dd($details);
 
-            return View::make('admin.editEvent',$details);
+            return view('admin.editEvent',$details);
         }
 
 
@@ -1113,7 +1128,7 @@
                     $destinationPath ='images';
                     if(!in_array($extension,$allowed_extensions)){
 
-                        return \Illuminate\Support\Facades\Redirect::back()->with('message','Error in extension')->with('type','error');
+                        return Redirect::back()->with('message','Error in extension')->with('type','error');
                     }else{
                         $filename = md5(time().$file->getClientOriginalName());
                         $upload_success = $file->move($destinationPath,$filename.".".$extension);
@@ -1149,7 +1164,7 @@
 
             if($validator -> fails()){
 
-                return \Illuminate\Support\Facades\Redirect::back()->withErrors($validator);
+                return Redirect::back()->withErrors($validator);
             }else{
 
                 //if(empty(Input::get('spiritcoco')))
@@ -1190,14 +1205,14 @@
         {
 
             $data['details'] = Feedback::all();
-            return View::make('admin.viewFeedBack',$data);
+            return view('admin.viewFeedBack',$data);
         }
 
 
         public function viewTestimony()
         {
             $data['details'] = Testify::all();
-            return View::make('admin.viewTestimony',$data);
+            return view('admin.viewTestimony',$data);
         }
 
 
@@ -1205,7 +1220,7 @@
         public function viewBookings()
         {
             $data['details'] = Bookings::all();
-            return View::make('admin.viewbookings',$data);
+            return view('admin.viewbookings',$data);
         }
 
 

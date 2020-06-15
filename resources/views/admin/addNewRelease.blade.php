@@ -17,6 +17,7 @@
                         <div class="row">
                             <div class="col-md-12">
                                 <form method="post" action="{{route('addNewReleaseProcess')}}" enctype="multipart/form-data">
+                                    @csrf
                                     <div class="p-20">
                                         <h5><b>Title</b></h5>
                                         <input type="text" class="form-control" maxlength="25" name="title" id="defaultconfig" />
