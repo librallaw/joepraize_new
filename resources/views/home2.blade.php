@@ -66,7 +66,57 @@
 			<!-- template sections -->
 
 
-			@include('inc/header2')
+			<section class="page_topline ds table_section table_section_sm section_padding_top_10 section_padding_bottom_10">
+				<div class="container-fluid">
+					<div class="row">
+						<div class="col-sm-6 text-center text-sm-left"> <span class="small-text rightpadding_20 hidden-sm">follow us:</span> <span>
+					<a class="fa fa-facebook-official" target="_blank" href="https://www.facebook.com/joepraize" title="Facebook"></a>
+					<a class="fa fa-twitter-square" target="_blank" href="https://twitter.com/joepraize" title="Twitter"></a>
+					<a class="fa fa-instagram" target="_blank" href="https://www.instagram.com/joepraize_de_emperor" title="Youtube"></a>
+					<a class="fa fa-youtube"  target="_blank" href="https://www.youtube.com/user/joepraizemusic" title="Youtube"></a>
+
+				</span> </div>
+
+					</div>
+				</div>
+			</section>
+
+
+			<header class="page_header header_darkgrey header_transparent toggler_xs_right tall_header">
+				<div class="container-fluid">
+					<div class="row">
+						<div class="col-sm-12 display_table">
+							<div class="header_left_logo display_table_cell"> <a href="index.html" class="logo top_logo">
+									<img src="images/logo.png" alt="">
+								</a> </div>
+							<div class="header_mainmenu display_table_cell text-center">
+								<!-- main nav start -->
+								<nav class="mainmenu_wrapper">
+									<ul class="mainmenu nav sf-menu">
+										<li class="active"> <a href="/">Home</a>
+
+										</li>
+										<li> <a href="/about">About</a>
+
+										</li>
+										<!-- eof pages -->
+
+										<!-- eof shop -->
+										<!-- contacts -->
+										<li> <a href="#">Contacts</a>
+
+										</li>
+										<!-- eof contacts -->
+									</ul>
+								</nav>
+								<!-- eof main nav -->
+								<!-- header toggler --><span class="toggle_menu"><span></span></span>
+							</div>
+
+						</div>
+					</div>
+				</div>
+			</header>
 
 
 
