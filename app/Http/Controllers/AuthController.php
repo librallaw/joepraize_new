@@ -1,6 +1,11 @@
 <?php
+namespace App\Http\Controllers;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Facades\Redirect;
+use Validator;
 
-    class AuthController extends BaseController{
+    class AuthController extends Controller{
 
         public function doLogin ()
         {
@@ -14,12 +19,15 @@
 
             if($validator -> fails()){
 
+
+
                 Redirect::back()->with('message','All form fields are required')->withErrors($validator)->with('type','errors');
             }else{
                 $userdata = array(
                     'email'=>Input::get('email'),
                     'password'=>Input::get('password')
                 );
+
 
                 if(Auth::attempt($userdata)){
 

@@ -24,6 +24,7 @@
                                         </a>
                                         <h4>{{$detail -> title}}</h4>
 
+
                                         <p class="text-danger"><strong>{{$detail->attendees->count()}} Attendees</strong> <p/>
 
                                         <p class="form-group">

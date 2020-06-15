@@ -158,10 +158,10 @@ Route::group(array('prefix'=>'admin'),function (){
 
 
 
-
+Route::post('admin/login','AuthController@doLogin')->name('doLogin');
 //admin processing routes
-Route::group(array('prefix'=>'admin'),function (){
-    Route::post('login','AuthController@doLogin')->name('doLogin');
+Route::group(array('prefix'=>'admin','middleware'=>'auth'),function (){
+
 
     Route::post('shop','AdminController@adminShopProcess')->name('adminShopprocess');
     Route::post("edit/shop/{id}",'AdminController@editShopProcess')->name('editShopProcess');

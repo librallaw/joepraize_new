@@ -42,20 +42,8 @@
         <h4 class="header-title m-t-0 m-b-30">
 
             <hr />
-            @if(Session::get('message'))
-                @if(Session::get('type') == 'success')
-                    <div class="alert alert-success">
-                        @elseif(Session::get('type') == 'error')
-                            <div class="alert alert-danger">
-                                @else
-                                    <div class="alert alert-info">
-                                        @endif
+            @include("alert")
 
-
-                                        {{ Session::get('message') }}
-
-                                    </div>
-                @endif
 
 
         </h4>
@@ -68,6 +56,7 @@
         </div>
         <div class="panel-body">
             <form class="form-horizontal m-t-20" method="post" action="/admin/login">
+                @csrf
 
                 <div class="form-group ">
                     <div class="col-xs-12">
