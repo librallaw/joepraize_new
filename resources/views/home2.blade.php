@@ -15,18 +15,18 @@
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
-	<link rel="stylesheet" href="css/bootstrap.min.css">
-	<link rel="stylesheet" href="css/animations.css">
-	<link rel="stylesheet" href="css/fonts.css">
-	<link rel="stylesheet" href="css/cue.css">
-	<link rel="stylesheet" href="css/main.css" class="color-switcher-link">
-	<link rel="stylesheet" href="css/shop.css" class="color-switcher-link">
-	<link rel="stylesheet" href="css/mediaelementplayer-legacy.css">
-	<script src="js/vendor/modernizr-2.6.2.min.js"></script>
+	<link rel="stylesheet" href="/css/bootstrap.min.css">
+	<link rel="stylesheet" href="/css/animations.css">
+	<link rel="stylesheet" href="/css/fonts.css">
+	<link rel="stylesheet" href="/css/cue.css">
+	<link rel="stylesheet" href="/css/main.css" class="color-switcher-link">
+	<link rel="stylesheet" href="/css/shop.css" class="color-switcher-link">
+	<link rel="stylesheet" href="/css/mediaelementplayer-legacy.css">
+	<script src="/js/vendor/modernizr-2.6.2.min.js"></script>
 	<!--[if lt IE 9]>
-		<script src="js/vendor/html5shiv.min.js"></script>
-		<script src="js/vendor/respond.min.js"></script>
-		<script src="js/vendor/jquery-1.12.4.min.js"></script>
+		<script src="/js/vendor/html5shiv.min.js"></script>
+		<script src="/js/vendor/respond.min.js"></script>
+		<script src="/js/vendor/jquery-1.12.4.min.js"></script>
 	<![endif]-->
 </head>
 
@@ -34,9 +34,9 @@
 	<!--[if lt IE 9]>
 		<div class="bg-danger text-center">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/" class="highlight">upgrade your browser</a> to improve your experience.</div>
 	<![endif]-->
-	<div class="preloader">
-		<div class="preloader_image fa-spin"></div>
-	</div>
+	{{--<div class="preloader">--}}
+		{{--<div class="preloader_image fa-spin"></div>--}}
+	{{--</div>--}}
 	<!-- search modal -->
 	<div class="modal" tabindex="-1" role="dialog" aria-labelledby="search_modal" id="search_modal"> <button type="button" class="close" data-dismiss="modal" aria-label="Close">
 		<span aria-hidden="true">
@@ -160,15 +160,15 @@
 									@foreach($new_release as $detail)
 										<div class="vertical-item content-absolute hover-entry-content">
 											<div class="item-media mutted-media ds"> <img src="@if(!empty($detail->banner)){{"/".$detail->banner}}@else {{"/images/people/jpsmall3.jpg"}} @endif" alt="">
-												<div class="entry-meta-corner grey"> <span class="big"><a href="{{URL::to('/newreleases/'.$detail -> id.'/'.\Str::slug(strtolower($detail -> title)))}}"><i class="fa fa-play-circle"></i></a></span> <span class="small-text"></span> </div>
+												<div class="entry-meta-corner grey"> <span class="big"><a href="{{'/newreleases/'.$detail -> id.'/'.\Str::slug(strtolower($detail -> title))}}"><i class="fa fa-play-circle"></i></a></span> <span class="small-text"></span> </div>
 											</div>
 											<div class="item-content cs">
-												<h3 class="entry-title bottommargin_0"> <a href="{{URL::to('/newreleases/'.$detail -> id.'/'.\Str::slug(strtolower($detail -> title)))}}">{{$detail->title}}
+												<h3 class="entry-title bottommargin_0"> <a href="{{'/newreleases/'.$detail -> id.'/'.\Str::slug(strtolower($detail -> title))}}">{{$detail->title}}
 													</a> </h3>
 													<p class="small-text bottommargin_0"> </p>
 												<div class="entry-content">
 													<p>{{$detail->text}} </p>
-													<p class="topmargin_20 event_buttons">  <a href="{{URL::to('/newreleases/'.$detail -> id.'/'.\Str::slug(strtolower($detail -> title)))}}" class="theme_button inverse">Read More</a> </p>
+													<p class="topmargin_20 event_buttons">  <a href="{{'/newreleases/'.$detail -> id.'/'.\Str::slug(strtolower($detail -> title))}}" class="theme_button inverse">Read More</a> </p>
 												</div>
 											</div>
 										</div>
@@ -217,7 +217,7 @@
 									</div>
 								</div>
 								<div class="item-content topmargin_35">
-									<h3 class="entry-title"> <a href="{{URL::to('/newreleases/'.$detail -> id.'/'.\Str::slug(strtolower($detail -> title)))}}">{{$new_release[0]->title}}</a> </h3>
+									<h3 class="entry-title"> <a href="{{'/newreleases/'.$detail -> id.'/'.\Str::slug(strtolower($detail -> title))}}">{{$new_release[0]->title}}</a> </h3>
 
 
 								</div>
@@ -361,44 +361,31 @@
 			<section id="contact" class="ds ms background_cover page_contact section_padding_top_150 section_padding_bottom_150">
 				<div class="container">
 					<div class="row">
-						@if (Session::get('message'))
-							<div class="alert alert-success">
+						@include("alert")
 
-								{{ Session::get('message') }}<br>
-
-							</div>
-						@endif
-
-						@if ($errors->has())
-							<div class="alert alert-danger">
-								@foreach ($errors->all() as $error)
-									{{ $error }}<br>
-								@endforeach
-							</div>
-						@endif
 						<div class="col-sm-6 col-sm-offset-6 text-center">
 							<h2 class="section_header with_line" style="color:#dd4377">Contact for Booking</h2>
 							<p class="" style="color:#dd4377"> For booking and press inquiries please contact me by filling the form or calling the number: +234 803 288 5692 </p>
-							<form class="contact-form columns_padding_10 topmargin_30" method="post" action="{{URL::to('/')}}/feedback">
+							<form class="contact-form columns_padding_10 topmargin_30" method="post" action="{{'/'}}/feedback">
 								<div class="row">
 									<div class="col-md-6">
-										<div class="form-group margin_0"> <label for="name">Full Name <span class="required">*</span></label>  <input type="text" class="form-control" value="{{Input::old('name')}}" placeholder="Name" name="name" required> </div>
+										<div class="form-group margin_0"> <label for="name">Full Name <span class="required">*</span></label>  <input type="text" class="form-control" value="{{old('name')}}" placeholder="Name" name="name" required> </div>
 									</div>
 
 									<div class="col-md-6">
-										<div class="form-group margin_0"> <label for="email">Country<span class="required">*</span></label>  <input type="text" class="form-control"  value="{{Input::old('country')}}" placeholder="Country" name="country"> </div>
+										<div class="form-group margin_0"> <label for="email">Country<span class="required">*</span></label>  <input type="text" class="form-control"  value="{{old('country')}}" placeholder="Country" name="country"> </div>
 									</div>
 
 									<div class="col-md-6">
-										<div class="form-group margin_0"> <label for="email">Email<span class="required">*</span></label>  <input type="text" class="form-control" placeholder="Email Address" value="{{Input::old('email')}}" name="email" required> </div>
+										<div class="form-group margin_0"> <label for="email">Email<span class="required">*</span></label>  <input type="text" class="form-control" placeholder="Email Address" value="{{old('email')}}" name="email" required> </div>
 									</div>
 
 									<div class="col-md-6">
-										<div class="form-group margin_0"> <label for="email">Phone<span class="required">*</span></label> <input type="text" class="form-control" placeholder="Phone" name="phone" value="{{Input::old('phone')}}" required> </div>
+										<div class="form-group margin_0"> <label for="email">Phone<span class="required">*</span></label> <input type="text" class="form-control" placeholder="Phone" name="phone" value="{{old('phone')}}" required> </div>
 									</div>
 
 									<div class="col-md-12">
-										<div class="form-group margin_0"> <label for="message">Message</label> <textarea class="form-control" placeholder="Message" name="message">{{ Input::old('message') }}</textarea> </div>
+										<div class="form-group margin_0"> <label for="message">Message</label> <textarea class="form-control" placeholder="Message" name="message">{{ old('message') }}</textarea> </div>
 									</div>
 								</div>
 								<div class="row topmargin_20">
@@ -472,10 +459,10 @@
 		<!-- eof #box_wrapper -->
 	</div>
 	<!-- eof #canvas -->
-	<script src="js/compressed.js"></script>
-	<script src="js/main.js"></script>
-	<script src="js/mediaelement-and-player.min.js"></script>
-	<script src="js/mediaelement-migrate.min.js"></script>
+	<script src="/js/compressed.js"></script>
+	<script src="/js/main.js"></script>
+	<script src="/js/mediaelement-and-player.min.js"></script>
+	<script src="/js/mediaelement-migrate.min.js"></script>
 	<script>
 		/* <![CDATA[ */
 		var _cueSettings = {
@@ -489,7 +476,7 @@
 		};
 		/* ]]> */
 	</script>
-	<script src="js/cue.min.js"></script>
+	<script src="/js/cue.min.js"></script>
 
 </body>
 
